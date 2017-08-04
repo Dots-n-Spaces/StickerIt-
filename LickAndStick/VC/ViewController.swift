@@ -2,6 +2,7 @@ import UIKit
 import SceneKit
 import ARKit
 import EasyTipView
+import SnapKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ARSCNViewDelegate, ARSessionDelegate {
 
@@ -23,13 +24,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.addSubview(arSCNView)
         arSession.run(arSessionConfiguration)
 
-        let choosePicBtn = UIButton(type: .plain)
-        choosePicBtn.setTitle("Select Sticker/Logo", for: .normal)
-        choosePicBtn.sizeToFit()
-        choosePicBtn.center = CGPoint(x: 140, y: UIScreen.main.bounds.size.height - 30)
-        choosePicBtn.addTarget(self, action: #selector(self.pickPic), for: .touchUpInside)
-        view.addSubview(choosePicBtn as UIView)
-
         var preferences = EasyTipView.Preferences()
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
         preferences.drawing.foregroundColor = UIColor.white
@@ -37,36 +31,52 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         preferences.drawing.arrowPosition = EasyTipView.ArrowPosition.top
         EasyTipView.globalPreferences = preferences
 
-        EasyTipView.show(forView: choosePicBtn,
-                         withinSuperview: view,
-                         text: "Select your Sticker/Logo here",
-                         preferences: preferences,
-                         delegate: self)
+        var preferences2 = EasyTipView.Preferences()
+        preferences2.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
+        preferences2.drawing.foregroundColor = UIColor.white
+        preferences2.drawing.backgroundColor = UIColor(hue:0.16, saturation:0.99, brightness:0.6, alpha:1)
+        preferences2.drawing.arrowPosition = EasyTipView.ArrowPosition.top
 
-        let centerView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.height/2, y: UIScreen.main.bounds.size.height/2, width: 0, height: 0))
+        var preferences3 = EasyTipView.Preferences()
+        preferences3.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
+        preferences3.drawing.foregroundColor = UIColor.white
+        preferences3.drawing.backgroundColor = UIColor(hue:0.76, saturation:0.99, brightness:0.6, alpha:1)
+        preferences3.drawing.arrowPosition = EasyTipView.ArrowPosition.top
+
+        let chooseImg = UIImageView(image: #imageLiteral(resourceName: "selectImage"))
+        chooseImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pickPic)))
+        view.addSubview(chooseImg)
+        chooseImg.isUserInteractionEnabled = true
+        chooseImg.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view.snp.centerX)
+            make.bottom.equalTo(view.snp.bottom).offset(-20)
+            make.height.equalTo(60)
+            make.width.equalTo(60)
+        }
+
+        EasyTipView.show(forView: chooseImg, withinSuperview: view, text: "Select your Sticker/Logo here",
+                         preferences: preferences, delegate: self)
+
+        let centerView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2, width: 0, height: 0))
         view.addSubview(centerView)
-        EasyTipView.show(forView: centerView,
-                         withinSuperview: view,
-                         text: "Touch anywhere on screen to put stick the logo",
-                         preferences: preferences,
-                         delegate: self)
+        EasyTipView.show(forView: centerView, withinSuperview: view, text: "Touch anywhere on screen to put stick the logo",
+                         preferences: preferences2, delegate: self)
 
-        let helpBtn = UIButton(type: .plain)
-        helpBtn.setTitle("Help", for: .normal)
-        helpBtn.sizeToFit()
-        helpBtn.center = CGPoint(x: 140, y: 130)
-        helpBtn.addTarget(self, action: #selector(self.openHelpVC), for: .touchDown)
-        view.addSubview(helpBtn as UIView)
+        let helpIView = UIImageView(image: #imageLiteral(resourceName: "help"))
+        helpIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openHelpVC)))
+        view.addSubview(helpIView)
+        helpIView.isUserInteractionEnabled = true
+        helpIView.snp.makeConstraints { (make) in
+            make.right.equalTo(view.snp.right).offset(-15)
+            make.top.equalTo(view.snp.top).offset(30)
+        }
 
-        EasyTipView.show(forView: helpBtn,
-                         withinSuperview: view,
-                         text: "Help is here",
-                         preferences: preferences,
-                         delegate: self)
+        EasyTipView.show(forView: helpIView, withinSuperview: view, text: "Help is here",
+                         preferences: preferences3, delegate: self)
     }
 
     @objc func openHelpVC() {
-        navigationController?.pushViewController(HelpVC(), animated: true)
+        present(HelpVC(), animated: true) { }
     }
 
     override func viewWillAppear(_ animated: Bool) {

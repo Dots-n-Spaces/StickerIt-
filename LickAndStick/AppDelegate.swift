@@ -4,7 +4,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
-    var navController = UINavigationController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -21,11 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        }
 
-        navController = UINavigationController(rootViewController: ViewController())
-        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navController.navigationBar.shadowImage = UIImage()
-        navController.navigationBar.isTranslucent = true
-
         //        let userDefaults = UserDefaults.standard
         //
         //        if !userDefaults.bool(forKey: "walkthroughPresented") {
@@ -35,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        }
 //        navController.pushViewController(WalkthroughVC(), animated: true)
 
-        window?.rootViewController = navController
+        window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
 
         return true

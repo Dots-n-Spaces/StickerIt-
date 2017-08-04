@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		647418FC1F34AA8A007435CF /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647418FB1F34AA8A007435CF /* HelpVC.swift */; };
+		647418FE1F34AA94007435CF /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647418FD1F34AA94007435CF /* OrderVC.swift */; };
 		64D0E8CD1F3479AD007735A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0E8CC1F3479AD007735A7 /* AppDelegate.swift */; };
 		64D0E8D11F3479AD007735A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0E8D01F3479AD007735A7 /* ViewController.swift */; };
 		64D0E8D61F3479AD007735A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64D0E8D51F3479AD007735A7 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* Begin PBXFileReference section */
 		31F76B0B5A5BB4A26958C0CD /* Pods-LickAndStick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LickAndStick.release.xcconfig"; path = "Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick.release.xcconfig"; sourceTree = "<group>"; };
 		542604B7F2B3E59D169015F6 /* Pods_LickAndStick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LickAndStick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		647418FB1F34AA8A007435CF /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
+		647418FD1F34AA94007435CF /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
 		64D0E8C91F3479AD007735A7 /* LickAndStick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LickAndStick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D0E8CC1F3479AD007735A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64D0E8D01F3479AD007735A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +42,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		647418FF1F34AA9A007435CF /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				647418FB1F34AA8A007435CF /* HelpVC.swift */,
+				647418FD1F34AA94007435CF /* OrderVC.swift */,
+				64D0E8D01F3479AD007735A7 /* ViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		64D0E8C01F3479AD007735A7 = {
 			isa = PBXGroup;
 			children = (
@@ -63,7 +77,7 @@
 				64D0E8D51F3479AD007735A7 /* Assets.xcassets */,
 				64D0E8DA1F3479AD007735A7 /* Info.plist */,
 				64D0E8D71F3479AD007735A7 /* LaunchScreen.storyboard */,
-				64D0E8D01F3479AD007735A7 /* ViewController.swift */,
+				647418FF1F34AA9A007435CF /* VC */,
 			);
 			path = LickAndStick;
 			sourceTree = "<group>";
@@ -98,6 +112,7 @@
 				64D0E8C71F3479AD007735A7 /* Resources */,
 				55746C5EE6EE70EF8C3AD7AB /* [CP] Embed Pods Frameworks */,
 				748DD1CD4A15E2E5F1AA426D /* [CP] Copy Pods Resources */,
+				647419001F34AD66007435CF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -169,6 +184,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		647419001F34AD66007435CF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+		};
 		748DD1CD4A15E2E5F1AA426D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,6 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647418FC1F34AA8A007435CF /* HelpVC.swift in Sources */,
+				647418FE1F34AA94007435CF /* OrderVC.swift in Sources */,
 				64D0E8D11F3479AD007735A7 /* ViewController.swift in Sources */,
 				64D0E8CD1F3479AD007735A7 /* AppDelegate.swift in Sources */,
 			);

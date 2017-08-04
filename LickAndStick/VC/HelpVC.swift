@@ -15,8 +15,26 @@ class HelpVC: UIViewController {
         backIView.snp.makeConstraints { (make) in
             make.top.equalTo(view.snp.top).offset(30)
             make.left.equalTo(view.snp.left).offset(15)
-            make.height.equalTo(40)
-            make.width.equalTo(40)
+            make.height.equalTo(50)
+            make.width.equalTo(50)
+        }
+
+        let titleLabel = UILabel()
+        titleLabel.text = "Lick&Stick"
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view.snp.centerX)
+            make.centerY.equalTo(backIView.snp.centerY)
+        }
+
+        let descriptionTextView = UILabel()
+        descriptionTextView.numberOfLines = 0
+        descriptionTextView.text = "Feedback is welcome:\n• @IFitNine on Twitter for quick comments.\n• ifitnine@gmail.com for private feedback."
+        view.addSubview(descriptionTextView)
+        descriptionTextView.snp.makeConstraints { (make) in
+            make.left.equalTo(view.snp.left).offset(15)
+            make.right.equalTo(view.snp.right).offset(-15)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
         }
 
         let contactsTextView = UITextView()
@@ -52,7 +70,7 @@ class HelpVC: UIViewController {
         }
     }
 
-   @objc func back() {
+    @objc func back() {
         dismiss(animated: true, completion: nil)
     }
 

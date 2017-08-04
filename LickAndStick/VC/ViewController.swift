@@ -13,6 +13,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var picNode: SCNNode = SCNNode()
     var curCameraAngle: vector_float3 = vector_float3()
     var picArray: [Any] = []
+    var tipsViews: [EasyTipView] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         preferences3.drawing.backgroundColor = UIColor(hue:0.76, saturation:0.99, brightness:0.6, alpha:1)
         preferences3.drawing.arrowPosition = EasyTipView.ArrowPosition.top
 
+        var preferences4 = EasyTipView.Preferences()
+        preferences4.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
+        preferences4.drawing.foregroundColor = UIColor.white
+        preferences4.drawing.backgroundColor = UIColor(hue:0.96, saturation:0.99, brightness:0.6, alpha:1)
+        preferences4.drawing.arrowPosition = EasyTipView.ArrowPosition.top
+
         let chooseImg = UIImageView(image: #imageLiteral(resourceName: "selectImage"))
         chooseImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pickPic)))
         view.addSubview(chooseImg)
@@ -54,13 +61,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             make.width.equalTo(60)
         }
 
-        EasyTipView.show(forView: chooseImg, withinSuperview: view, text: "Select your Sticker/Logo here",
-                         preferences: preferences, delegate: self)
+        let a = EasyTipView(text: "Select your Sticker/Logo here", preferences: preferences, delegate: self)
+        a.show(forView: chooseImg, withinSuperview: view)
+        tipsViews.append(a)
 
         let centerView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2, width: 0, height: 0))
         view.addSubview(centerView)
-        EasyTipView.show(forView: centerView, withinSuperview: view, text: "Touch anywhere on screen to put stick the logo",
-                         preferences: preferences2, delegate: self)
+        let d = EasyTipView(text: "Touch anywhere on screen to put stick the logo", preferences: preferences2, delegate: self)
+        d.show(forView: centerView, withinSuperview: view)
+        tipsViews.append(d)
 
         let helpIView = UIImageView(image: #imageLiteral(resourceName: "help"))
         helpIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openHelpVC)))
@@ -69,14 +78,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         helpIView.snp.makeConstraints { (make) in
             make.right.equalTo(view.snp.right).offset(-15)
             make.top.equalTo(view.snp.top).offset(30)
+            make.height.equalTo(50)
+            make.width.equalTo(50)
         }
 
-        EasyTipView.show(forView: helpIView, withinSuperview: view, text: "Help is here",
-                         preferences: preferences3, delegate: self)
+        let b = EasyTipView(text: "Help is here", preferences: preferences3, delegate: self)
+        b.show(forView: helpIView, withinSuperview: view)
+        tipsViews.append(b)
+
+        let buyIView = UIImageView(image: #imageLiteral(resourceName: "buy"))
+        buyIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openOrderVC)))
+        view.addSubview(buyIView)
+        buyIView.isUserInteractionEnabled = true
+        buyIView.snp.makeConstraints { (make) in
+            make.right.equalTo(view.snp.right).offset(-20)
+            make.bottom.equalTo(view.snp.bottom).offset(-20)
+            make.height.equalTo(60)
+            make.width.equalTo(60)
+        }
+
+        let c = EasyTipView(text: "Make order here", preferences: preferences4, delegate: self)
+        c.show(forView: buyIView, withinSuperview: view)
+        tipsViews.append(c)
     }
 
     @objc func openHelpVC() {
         present(HelpVC(), animated: true) { }
+    }
+
+    @objc func openOrderVC() {
+        present(OrderVC(), animated: true) { }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -216,22 +247,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
-
     }
 
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
-
     }
 
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
-
     }
 }
 
 extension ViewController: EasyTipViewDelegate {
     func easyTipViewDidDismiss(_ tipView: EasyTipView) {
-
+        for tip in tipsViews {
+            tip.dismiss()
+        }
+        tipsViews.removeAll()
     }
 }

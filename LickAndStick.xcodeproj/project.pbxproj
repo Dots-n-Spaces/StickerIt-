@@ -11,15 +11,19 @@
 		64D0E8D11F3479AD007735A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0E8D01F3479AD007735A7 /* ViewController.swift */; };
 		64D0E8D61F3479AD007735A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64D0E8D51F3479AD007735A7 /* Assets.xcassets */; };
 		64D0E8D91F3479AD007735A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64D0E8D71F3479AD007735A7 /* LaunchScreen.storyboard */; };
+		6A428605CD67F719B6688890 /* Pods_LickAndStick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542604B7F2B3E59D169015F6 /* Pods_LickAndStick.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31F76B0B5A5BB4A26958C0CD /* Pods-LickAndStick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LickAndStick.release.xcconfig"; path = "Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick.release.xcconfig"; sourceTree = "<group>"; };
+		542604B7F2B3E59D169015F6 /* Pods_LickAndStick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LickAndStick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D0E8C91F3479AD007735A7 /* LickAndStick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LickAndStick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D0E8CC1F3479AD007735A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64D0E8D01F3479AD007735A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		64D0E8D51F3479AD007735A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64D0E8D81F3479AD007735A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64D0E8DA1F3479AD007735A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E49C98A1A015E66C46B572CE /* Pods-LickAndStick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LickAndStick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A428605CD67F719B6688890 /* Pods_LickAndStick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +43,8 @@
 			children = (
 				64D0E8CB1F3479AD007735A7 /* LickAndStick */,
 				64D0E8CA1F3479AD007735A7 /* Products */,
+				878D4C6A789439C53CB70184 /* Pods */,
+				D06EF27513D07F0B7C4C2A48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +68,23 @@
 			path = LickAndStick;
 			sourceTree = "<group>";
 		};
+		878D4C6A789439C53CB70184 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E49C98A1A015E66C46B572CE /* Pods-LickAndStick.debug.xcconfig */,
+				31F76B0B5A5BB4A26958C0CD /* Pods-LickAndStick.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D06EF27513D07F0B7C4C2A48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				542604B7F2B3E59D169015F6 /* Pods_LickAndStick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -68,9 +92,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64D0E8DD1F3479AD007735A7 /* Build configuration list for PBXNativeTarget "LickAndStick" */;
 			buildPhases = (
+				B7237C93205FC15B4871E725 /* [CP] Check Pods Manifest.lock */,
 				64D0E8C51F3479AD007735A7 /* Sources */,
 				64D0E8C61F3479AD007735A7 /* Frameworks */,
 				64D0E8C71F3479AD007735A7 /* Resources */,
+				55746C5EE6EE70EF8C3AD7AB /* [CP] Embed Pods Frameworks */,
+				748DD1CD4A15E2E5F1AA426D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +152,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		55746C5EE6EE70EF8C3AD7AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		748DD1CD4A15E2E5F1AA426D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7237C93205FC15B4871E725 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		64D0E8C51F3479AD007735A7 /* Sources */ = {
@@ -259,6 +334,7 @@
 		};
 		64D0E8DE1F3479AD007735A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E49C98A1A015E66C46B572CE /* Pods-LickAndStick.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZZGMPFLA2F;
@@ -273,6 +349,7 @@
 		};
 		64D0E8DF1F3479AD007735A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31F76B0B5A5BB4A26958C0CD /* Pods-LickAndStick.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZZGMPFLA2F;

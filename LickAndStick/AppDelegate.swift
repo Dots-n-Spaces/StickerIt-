@@ -28,6 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navController.navigationBar.shadowImage = UIImage()
         navController.navigationBar.isTranslucent = true
 
+        //        let userDefaults = UserDefaults.standard
+        //
+        //        if !userDefaults.bool(forKey: "walkthroughPresented") {
+        //            showWalkthrough()
+        //            userDefaults.set(true, forKey: "walkthroughPresented")
+        //            userDefaults.synchronize()
+        //        }
+//        navController.pushViewController(WalkthroughVC(), animated: true)
+
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
 

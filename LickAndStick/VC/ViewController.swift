@@ -15,18 +15,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         arSession.delegate = self
         initARSCNView()
         initARSessionConfiguration()
 
         view.addSubview(arSCNView)
         arSession.run(arSessionConfiguration)
-        
+
         let choosePicBtn = UIButton(type: .plain)
         choosePicBtn.setTitle("Select Sticker/Logo", for: .normal)
         choosePicBtn.sizeToFit()
-        choosePicBtn.center = CGPoint(x: 40, y: UIScreen.main.bounds.size.height - 30)
+        choosePicBtn.center = CGPoint(x: 140, y: UIScreen.main.bounds.size.height - 30)
         choosePicBtn.addTarget(self, action: #selector(self.pickPic), for: .touchUpInside)
         view.addSubview(choosePicBtn as UIView)
 
@@ -42,20 +42,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                          text: "Select your Sticker/Logo here",
                          preferences: preferences,
                          delegate: self)
+
+        let centerView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.height/2, y: UIScreen.main.bounds.size.height/2, width: 0, height: 0))
+        view.addSubview(centerView)
+        EasyTipView.show(forView: centerView,
+                         withinSuperview: view,
+                         text: "Touch anywhere on screen to put stick the logo",
+                         preferences: preferences,
+                         delegate: self)
+
+        let helpBtn = UIButton(type: .plain)
+        helpBtn.setTitle("Help", for: .normal)
+        helpBtn.sizeToFit()
+        helpBtn.center = CGPoint(x: 140, y: 130)
+        helpBtn.addTarget(self, action: #selector(self.openHelpVC), for: .touchDown)
+        view.addSubview(helpBtn as UIView)
+
+        EasyTipView.show(forView: helpBtn,
+                         withinSuperview: view,
+                         text: "Help is here",
+                         preferences: preferences,
+                         delegate: self)
     }
-    
+
+    @objc func openHelpVC() {
+        navigationController?.pushViewController(HelpVC(), animated: true)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         arSession.run(arSessionConfiguration)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         arSession.pause()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
@@ -68,7 +93,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.allowsEditing = true
         present(picker, animated: true) { }
     }
-    
+
     func print_Matrix4(matrix: SCNMatrix4) {
         print("‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹matrix‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹")
         print(String(format: "\n%.2f, %.2f, %.2f, %.2f\n%.2f, %.2f, %.2f, %.2f\n%.2f, %.2f, %.2f, %.2f\n%.2f, %.2f, %.2f, %.2f\n", matrix.m11, matrix.m12, matrix.m13, matrix.m14, matrix.m21, matrix.m22, matrix.m23, matrix.m24, matrix.m31, matrix.m32, matrix.m33, matrix.m34, matrix.m41, matrix.m42, matrix.m43, matrix.m44))
@@ -108,7 +133,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
     }
-
 
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         curCameraAngle = frame.camera.eulerAngles
@@ -170,7 +194,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         swipeRightRecognizer.direction = .right
         arSCNView.addGestureRecognizer(swipeRightRecognizer)
     }
-    
+
 /*
     // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
@@ -179,20 +203,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return node
     }
 */
-    
+
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
-        
+
     }
-    
+
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
+
     }
-    
+
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+
     }
 }
 

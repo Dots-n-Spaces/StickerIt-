@@ -1,6 +1,7 @@
 import UIKit
 import SceneKit
 import ARKit
+import EasyTipView
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ARSCNViewDelegate, ARSessionDelegate {
 
@@ -23,11 +24,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         arSession.run(arSessionConfiguration)
         
         let choosePicBtn = UIButton(type: .plain)
-        choosePicBtn.setTitle("Choose a photo", for: .normal)
+        choosePicBtn.setTitle("Select Sticker/Logo", for: .normal)
         choosePicBtn.sizeToFit()
         choosePicBtn.center = CGPoint(x: 40, y: UIScreen.main.bounds.size.height - 30)
         choosePicBtn.addTarget(self, action: #selector(self.pickPic), for: .touchUpInside)
         view.addSubview(choosePicBtn as UIView)
+
+        var preferences = EasyTipView.Preferences()
+        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
+        preferences.drawing.foregroundColor = UIColor.white
+        preferences.drawing.backgroundColor = UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1)
+        preferences.drawing.arrowPosition = EasyTipView.ArrowPosition.top
+        EasyTipView.globalPreferences = preferences
+
+        EasyTipView.show(forView: choosePicBtn,
+                         withinSuperview: view,
+                         text: "Select your Sticker/Logo here",
+                         preferences: preferences,
+                         delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -179,5 +193,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+}
+
+extension ViewController: EasyTipViewDelegate {
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+
     }
 }

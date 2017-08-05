@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,16 +13,52 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectImage" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-Eg-WnW">
+                                <rect key="frame" x="162" y="592" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6Rh-EQ-3ee"/>
+                                    <constraint firstAttribute="height" constant="50" id="JII-no-aYs"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buy" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-mP-6Qg">
+                                <rect key="frame" x="305" y="50" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="7qY-c0-Jll"/>
+                                    <constraint firstAttribute="height" constant="50" id="Lx7-gf-61d"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="fvF-G0-WrY">
+                                <rect key="frame" x="20" y="55" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="dZ3-0G-Erc"/>
+                                    <constraint firstAttribute="height" constant="40" id="iUf-dF-UTT"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eSm-mP-6Qg" firstAttribute="centerY" secondItem="fvF-G0-WrY" secondAttribute="centerY" id="99h-Al-7gj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eSm-mP-6Qg" secondAttribute="trailing" constant="20" id="MBR-dn-C0N"/>
+                            <constraint firstItem="rf5-Eg-WnW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-25" id="Ub3-Sv-6e6"/>
+                            <constraint firstItem="fvF-G0-WrY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="m8R-bV-JHz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="fvF-G0-WrY" secondAttribute="leading" constant="-20" id="tiH-bA-q0A"/>
+                            <constraint firstItem="rf5-Eg-WnW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ufS-9A-ra7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="buy" width="42" height="42"/>
+        <image name="help" width="42" height="42"/>
+        <image name="selectImage" width="42" height="42"/>
+    </resources>
 </document>

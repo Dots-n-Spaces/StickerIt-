@@ -14,8 +14,8 @@ class OrderVC: UIViewController {
         backIView.snp.makeConstraints { (make) in
             make.top.equalTo(view.snp.top).offset(30)
             make.left.equalTo(view.snp.left).offset(15)
-            make.height.equalTo(50)
-            make.width.equalTo(50)
+            make.height.equalTo(40)
+            make.width.equalTo(40)
         }
 
         let titleLabel = UILabel()

@@ -10,6 +10,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var arSession = ARSession()
     var arSessionConfiguration = ARSessionConfiguration()
 
+    var imageWasSelected = false
     var picNode: SCNNode = SCNNode()
     var curCameraAngle: vector_float3 = vector_float3()
     var picArray: [Any] = []
@@ -167,6 +168,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .savedPhotosAlbum
+        picker.allowsEditing = false
         present(picker, animated: true) { }
     }
 
@@ -177,6 +179,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @objc func tapped(_ tapper: UITapGestureRecognizer) {
+        if imageWasSelected == false {
+            moveToScene(image: #imageLiteral(resourceName: "icon"))
+        }
+
         let location: CGPoint = tapper.location(in: arSCNView)
         let hitTestResults: [ARHitTestResult] = arSCNView.hitTest(location, types: .featurePoint)
         if hitTestResults.count > 0 {
@@ -215,23 +221,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let pickedImage: UIImage? = (info[UIImagePickerControllerOriginalImage] as? UIImage)
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageWasSelected = true
+            moveToScene(image: pickedImage)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+
+    private func moveToScene(image: UIImage, inFront: Bool = false) {
+        picNode.removeFromParentNode()
+
         let material = SCNMaterial()
-        material.diffuse.contents = pickedImage
+        material.diffuse.contents = image
         picArray.append(material)
         let constWidth: CGFloat = 0.15
-        let scale: CGFloat? = (pickedImage?.size.width)! / constWidth
-        let picPlane = SCNPlane(width: constWidth, height: (pickedImage?.size.height)! / scale!)
+        let scale: CGFloat? = image.size.width / constWidth
+        let picPlane = SCNPlane(width: constWidth, height: image.size.height / scale!)
         picPlane.materials = [material]
         let picNodeNew = SCNNode(geometry: picPlane)
-        picNodeNew.transform = SCNMatrix4MakeTranslation(0, 0, -0.5)
+        picNodeNew.transform = SCNMatrix4MakeTranslation(picNodeNew.position.x, picNodeNew.position.y, -0.5)
         if picNodeNew.parent == nil {
             arSCNView.scene.rootNode.addChildNode(picNodeNew)
         }
-        self.picNode = picNodeNew
-        self.dismiss(animated: true) {
-
-        }
+        picNode = picNodeNew
     }
 
     // MARK: - ARSCNViewDelegate

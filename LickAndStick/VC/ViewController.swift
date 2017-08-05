@@ -50,12 +50,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         preferences4.drawing.backgroundColor = UIColor(hue:0.96, saturation:0.99, brightness:0.6, alpha:1)
         preferences4.drawing.arrowPosition = EasyTipView.ArrowPosition.top
 
+        var preferences5 = EasyTipView.Preferences()
+        preferences5.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
+        preferences5.drawing.foregroundColor = UIColor.white
+        preferences5.drawing.backgroundColor = UIColor(hue:0.06, saturation:0.99, brightness:0.6, alpha:1)
+        preferences5.drawing.arrowPosition = EasyTipView.ArrowPosition.top
+
         let chooseImg = UIImageView(image: #imageLiteral(resourceName: "selectImage"))
         chooseImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pickPic)))
         view.addSubview(chooseImg)
         chooseImg.isUserInteractionEnabled = true
         chooseImg.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view.snp.centerX)
+            make.left.equalTo(view.snp.left).offset(15)
             make.bottom.equalTo(view.snp.bottom).offset(-20)
             make.height.equalTo(60)
             make.width.equalTo(60)
@@ -86,13 +92,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         b.show(forView: helpIView, withinSuperview: view)
         tipsViews.append(b)
 
+        let shareIView = UIImageView(image: #imageLiteral(resourceName: "share"))
+        shareIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openShare)))
+        view.addSubview(shareIView)
+        shareIView.isUserInteractionEnabled = true
+        shareIView.snp.makeConstraints { (make) in
+            make.right.equalTo(view.snp.right).offset(-15)
+            make.top.equalTo(view.snp.top).offset(30)
+            make.height.equalTo(50)
+            make.width.equalTo(50)
+        }
+
+        let e = EasyTipView(text: "Share with employes", preferences: preferences5, delegate: self)
+        e.show(forView: shareIView, withinSuperview: view)
+        tipsViews.append(e)
+
         let buyIView = UIImageView(image: #imageLiteral(resourceName: "buy"))
         buyIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openOrderVC)))
         view.addSubview(buyIView)
         buyIView.isUserInteractionEnabled = true
         buyIView.snp.makeConstraints { (make) in
             make.right.equalTo(view.snp.right).offset(-15)
-            make.top.equalTo(view.snp.top).offset(30)
+            make.bottom.equalTo(view.snp.bottom).offset(-20)
             make.height.equalTo(60)
             make.width.equalTo(60)
         }
@@ -108,6 +129,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @objc func openOrderVC() {
         present(OrderVC(), animated: true) { }
+    }
+
+    @objc func openShare() {
+//        let sharingItems:[AnyObject?] = [
+//            sharingText as AnyObject,
+//            sharingImage as AnyObject,
+//            sharingURL as AnyObject
+//        ]
+        let sharingItems = ["Some text here"]
+
+        let activityViewController = UIActivityViewController(activityItems: sharingItems.flatMap({$0}), applicationActivities: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            activityViewController.popoverPresentationController?.sourceView = view
+        }
+        present(activityViewController, animated: true, completion: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -131,7 +167,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .savedPhotosAlbum
-        picker.allowsEditing = true
         present(picker, animated: true) { }
     }
 

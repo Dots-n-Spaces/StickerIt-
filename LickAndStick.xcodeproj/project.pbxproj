@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64737D881F371AB700367101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64D0E8D51F3479AD007735A7 /* Assets.xcassets */; };
 		647418FC1F34AA8A007435CF /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647418FB1F34AA8A007435CF /* HelpVC.swift */; };
 		647418FE1F34AA94007435CF /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647418FD1F34AA94007435CF /* OrderVC.swift */; };
 		64D0E8CD1F3479AD007735A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0E8CC1F3479AD007735A7 /* AppDelegate.swift */; };
 		64D0E8D11F3479AD007735A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0E8D01F3479AD007735A7 /* ViewController.swift */; };
-		64D0E8D61F3479AD007735A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64D0E8D51F3479AD007735A7 /* Assets.xcassets */; };
-		64D0E8D91F3479AD007735A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64D0E8D71F3479AD007735A7 /* LaunchScreen.storyboard */; };
+		64FE22DF1F371C9D0003DB67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64FE22DD1F371C9D0003DB67 /* LaunchScreen.storyboard */; };
 		6A428605CD67F719B6688890 /* Pods_LickAndStick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542604B7F2B3E59D169015F6 /* Pods_LickAndStick.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 		64D0E8CC1F3479AD007735A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64D0E8D01F3479AD007735A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		64D0E8D51F3479AD007735A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		64D0E8D81F3479AD007735A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64D0E8DA1F3479AD007735A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64FE22DE1F371C9D0003DB67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LickAndStick/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E49C98A1A015E66C46B572CE /* Pods-LickAndStick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LickAndStick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +76,7 @@
 				64D0E8CC1F3479AD007735A7 /* AppDelegate.swift */,
 				64D0E8D51F3479AD007735A7 /* Assets.xcassets */,
 				64D0E8DA1F3479AD007735A7 /* Info.plist */,
-				64D0E8D71F3479AD007735A7 /* LaunchScreen.storyboard */,
+				64FE22DD1F371C9D0003DB67 /* LaunchScreen.storyboard */,
 				647418FF1F34AA9A007435CF /* VC */,
 			);
 			path = LickAndStick;
@@ -161,8 +161,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64D0E8D91F3479AD007735A7 /* LaunchScreen.storyboard in Resources */,
-				64D0E8D61F3479AD007735A7 /* Assets.xcassets in Resources */,
+				64737D881F371AB700367101 /* Assets.xcassets in Resources */,
+				64FE22DF1F371C9D0003DB67 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,10 +244,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		64D0E8D71F3479AD007735A7 /* LaunchScreen.storyboard */ = {
+		64FE22DD1F371C9D0003DB67 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				64D0E8D81F3479AD007735A7 /* Base */,
+				64FE22DE1F371C9D0003DB67 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

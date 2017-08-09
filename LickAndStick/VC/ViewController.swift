@@ -16,6 +16,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var picArray: [Any] = []
     var tipsViews: [EasyTipView] = []
 
+    let buyIView = UIImageView(image: #imageLiteral(resourceName: "buy"))
+    let chooseImg = UIImageView(image: #imageLiteral(resourceName: "selectImage"))
+    let helpIView = UIImageView(image: #imageLiteral(resourceName: "help"))
+    let shareIView = UIImageView(image: #imageLiteral(resourceName: "share"))
+    var centerView = UIView()
+
+    var aTooltip = EasyTipView(text: "")
+    var bTooltip = EasyTipView(text: "")
+    var cTooltip = EasyTipView(text: "")
+    var dTooltip = EasyTipView(text: "")
+    var eTooltip = EasyTipView(text: "")
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +38,66 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.addSubview(arSCNView)
         arSession.run(arSessionConfiguration)
 
+        chooseImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pickPic)))
+        view.addSubview(chooseImg)
+        chooseImg.isUserInteractionEnabled = true
+        chooseImg.snp.makeConstraints { (make) in
+            make.left.equalTo(view.snp.left).offset(15)
+            make.bottom.equalTo(view.snp.bottom).offset(-20)
+            make.height.equalTo(60)
+            make.width.equalTo(60)
+        }
+
+        centerView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2, width: 0, height: 0))
+        view.addSubview(centerView)
+
+        helpIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.showTooltips)))
+        view.addSubview(helpIView)
+        helpIView.isUserInteractionEnabled = true
+        helpIView.snp.makeConstraints { (make) in
+            make.left.equalTo(view.snp.left).offset(15)
+            make.top.equalTo(view.snp.top).offset(30)
+            make.height.equalTo(40)
+            make.width.equalTo(40)
+        }
+
+        shareIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openShare)))
+        view.addSubview(shareIView)
+        shareIView.isUserInteractionEnabled = true
+        shareIView.snp.makeConstraints { (make) in
+            make.right.equalTo(view.snp.right).offset(-15)
+            make.top.equalTo(view.snp.top).offset(30)
+            make.height.equalTo(40)
+            make.width.equalTo(40)
+        }
+
+        buyIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openOrderVC)))
+        view.addSubview(buyIView)
+        buyIView.isUserInteractionEnabled = true
+        buyIView.snp.makeConstraints { (make) in
+            make.right.equalTo(view.snp.right).offset(-15)
+            make.bottom.equalTo(view.snp.bottom).offset(-20)
+            make.height.equalTo(60)
+            make.width.equalTo(60)
+        }
+
+        addTooltips()
+
+        let userDefaults = UserDefaults.standard
+        if !userDefaults.bool(forKey: "walkthroughPresented") {
+            showTooltips()
+        }
+    }
+
+    @objc private func showTooltips() {
+        aTooltip.show(forView: chooseImg, withinSuperview: view)
+        bTooltip.show(forView: helpIView, withinSuperview: view)
+        cTooltip.show(forView: buyIView, withinSuperview: view)
+        dTooltip.show(forView: centerView, withinSuperview: view)
+        eTooltip.show(forView: shareIView, withinSuperview: view)
+    }
+
+    private func addTooltips() {
         var preferences = EasyTipView.Preferences()
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
         preferences.drawing.foregroundColor = UIColor.white
@@ -57,75 +129,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         preferences5.drawing.backgroundColor = UIColor(hue:0.06, saturation:0.99, brightness:0.6, alpha:1)
         preferences5.drawing.arrowPosition = EasyTipView.ArrowPosition.top
 
-        let chooseImg = UIImageView(image: #imageLiteral(resourceName: "selectImage"))
-        chooseImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pickPic)))
-        view.addSubview(chooseImg)
-        chooseImg.isUserInteractionEnabled = true
-        chooseImg.snp.makeConstraints { (make) in
-            make.left.equalTo(view.snp.left).offset(15)
-            make.bottom.equalTo(view.snp.bottom).offset(-20)
-            make.height.equalTo(60)
-            make.width.equalTo(60)
-        }
+        aTooltip = EasyTipView(text: "Select your Sticker/Logo here", preferences: preferences, delegate: self)
+        tipsViews.append(aTooltip)
 
-        let a = EasyTipView(text: "Select your Sticker/Logo here", preferences: preferences, delegate: self)
-        a.show(forView: chooseImg, withinSuperview: view)
-        tipsViews.append(a)
+        bTooltip = EasyTipView(text: "Help is here", preferences: preferences3, delegate: self)
+        tipsViews.append(bTooltip)
 
-        let centerView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2, width: 0, height: 0))
-        view.addSubview(centerView)
-        let d = EasyTipView(text: "Touch anywhere on screen to put stick the logo", preferences: preferences2, delegate: self)
-        d.show(forView: centerView, withinSuperview: view)
-        tipsViews.append(d)
+        cTooltip = EasyTipView(text: "Make order here", preferences: preferences4, delegate: self)
+        tipsViews.append(cTooltip)
 
-        let helpIView = UIImageView(image: #imageLiteral(resourceName: "help"))
-        helpIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openHelpVC)))
-        view.addSubview(helpIView)
-        helpIView.isUserInteractionEnabled = true
-        helpIView.snp.makeConstraints { (make) in
-            make.left.equalTo(view.snp.left).offset(15)
-            make.top.equalTo(view.snp.top).offset(30)
-            make.height.equalTo(50)
-            make.width.equalTo(50)
-        }
+        dTooltip = EasyTipView(text: "Touch anywhere on screen to put stick the logo", preferences: preferences2, delegate: self)
+        tipsViews.append(dTooltip)
 
-        let b = EasyTipView(text: "Help is here", preferences: preferences3, delegate: self)
-        b.show(forView: helpIView, withinSuperview: view)
-        tipsViews.append(b)
-
-        let shareIView = UIImageView(image: #imageLiteral(resourceName: "share"))
-        shareIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openShare)))
-        view.addSubview(shareIView)
-        shareIView.isUserInteractionEnabled = true
-        shareIView.snp.makeConstraints { (make) in
-            make.right.equalTo(view.snp.right).offset(-15)
-            make.top.equalTo(view.snp.top).offset(30)
-            make.height.equalTo(50)
-            make.width.equalTo(50)
-        }
-
-        let e = EasyTipView(text: "Share with employes", preferences: preferences5, delegate: self)
-        e.show(forView: shareIView, withinSuperview: view)
-        tipsViews.append(e)
-
-        let buyIView = UIImageView(image: #imageLiteral(resourceName: "buy"))
-        buyIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openOrderVC)))
-        view.addSubview(buyIView)
-        buyIView.isUserInteractionEnabled = true
-        buyIView.snp.makeConstraints { (make) in
-            make.right.equalTo(view.snp.right).offset(-15)
-            make.bottom.equalTo(view.snp.bottom).offset(-20)
-            make.height.equalTo(60)
-            make.width.equalTo(60)
-        }
-
-        let c = EasyTipView(text: "Make order here", preferences: preferences4, delegate: self)
-        c.show(forView: buyIView, withinSuperview: view)
-        tipsViews.append(c)
-    }
-
-    @objc func openHelpVC() {
-        present(HelpVC(), animated: true) { }
+        eTooltip = EasyTipView(text: "Share with employes", preferences: preferences5, delegate: self)
+        tipsViews.append(eTooltip)
     }
 
     @objc func openOrderVC() {
@@ -181,19 +198,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let location: CGPoint = tapper.location(in: arSCNView)
         let hitTestResults: [ARHitTestResult] = arSCNView.hitTest(location, types: .featurePoint)
         if hitTestResults.count > 0 {
-            let anchor: ARHitTestResult? = hitTestResults.first
-            let hitPointTransform: SCNMatrix4? = SCNMatrix4((anchor?.worldTransform)!)
-            print_Matrix4(matrix: hitPointTransform!)
-            //        // sth like this:
-            //        1.00, 0.00, 0.00, 0.00
-            //        0.00, 1.00, 0.00, 0.00
-            //        0.00, 0.00, 1.00, 0.00
-            //        0.38, -0.12, -0.18, 1.00
-            let hitPointPosition: SCNVector3? = SCNVector3Make((hitPointTransform?.m41)!, (hitPointTransform?.m42)!, (hitPointTransform?.m43)!)
-            // put at nearest anchor
-            picNode.position = hitPointPosition!
-            // face to camera
+//            let anchor: ARHitTestResult? = hitTestResults.first
+//            let hitPointTransform: SCNMatrix4? = SCNMatrix4((anchor?.worldTransform)!)
+//            print_Matrix4(matrix: hitPointTransform!)
+//            //        // sth like this:
+//            //        1.00, 0.00, 0.00, 0.00
+//            //        0.00, 1.00, 0.00, 0.00
+//            //        0.00, 0.00, 1.00, 0.00
+//            //        0.38, -0.12, -0.18, 1.00
+//            let hitPointPosition: SCNVector3? = SCNVector3Make((hitPointTransform?.m41)!, (hitPointTransform?.m42)!, (hitPointTransform?.m43)!)
+//            // put at nearest anchor
+//            picNode.position = hitPointPosition!
+//            // face to camera
             picNode.eulerAngles = SCNVector3Make(curCameraAngle.x, curCameraAngle.y, 0)
+
+            var translation = matrix_identity_float4x4
+            translation.columns.3.z = -0.5
+            if let currentFrame = arSCNView.session.currentFrame {
+                picNode.simdTransform = matrix_multiply(currentFrame.camera.transform, translation)
+                picNode.eulerAngles = SCNVector3Make(curCameraAngle.x, curCameraAngle.y, 0)
+            }
         }
     }
 
@@ -302,6 +326,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 extension ViewController: EasyTipViewDelegate {
     func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(true, forKey: "walkthroughPresented")
+        userDefaults.synchronize()
+
         for tip in tipsViews {
             tip.dismiss()
         }

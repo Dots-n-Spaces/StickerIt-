@@ -133,12 +133,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @objc func openShare() {
-//        let sharingItems:[AnyObject?] = [
-//            sharingText as AnyObject,
-//            sharingImage as AnyObject,
-//            sharingURL as AnyObject
-//        ]
-        let sharingItems = ["Some text here"]
+        let sharingItems = [arSCNView.snapshot()]
 
         let activityViewController = UIActivityViewController(activityItems: sharingItems.flatMap({$0}), applicationActivities: nil)
         if UIDevice.current.userInterfaceIdiom == .pad {

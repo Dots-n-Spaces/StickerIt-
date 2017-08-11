@@ -95,6 +95,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         cTooltip.show(forView: buyIView, withinSuperview: view)
         dTooltip.show(forView: centerView, withinSuperview: view)
         eTooltip.show(forView: shareIView, withinSuperview: view)
+
+        tipsViews.append(aTooltip)
+        tipsViews.append(bTooltip)
+        tipsViews.append(cTooltip)
+        tipsViews.append(dTooltip)
+        tipsViews.append(eTooltip)
     }
 
     private func addTooltips() {
@@ -130,19 +136,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         preferences5.drawing.arrowPosition = EasyTipView.ArrowPosition.top
 
         aTooltip = EasyTipView(text: "Select your Sticker/Logo here", preferences: preferences, delegate: self)
-        tipsViews.append(aTooltip)
-
         bTooltip = EasyTipView(text: "Help is here", preferences: preferences3, delegate: self)
-        tipsViews.append(bTooltip)
-
         cTooltip = EasyTipView(text: "Make order here", preferences: preferences4, delegate: self)
-        tipsViews.append(cTooltip)
-
         dTooltip = EasyTipView(text: "Touch anywhere on screen to put stick the logo", preferences: preferences2, delegate: self)
-        tipsViews.append(dTooltip)
-
         eTooltip = EasyTipView(text: "Share with employes", preferences: preferences5, delegate: self)
-        tipsViews.append(eTooltip)
     }
 
     @objc func openOrderVC() {
@@ -192,7 +189,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @objc func tapped(_ tapper: UITapGestureRecognizer) {
         if imageWasSelected == false {
-            moveToScene(image: #imageLiteral(resourceName: "icon"))
+            moveToScene(image: String.randomEmoji().image()!)
         }
 
         let location: CGPoint = tapper.location(in: arSCNView)

@@ -135,11 +135,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         preferences5.drawing.backgroundColor = UIColor(hue:0.06, saturation:0.99, brightness:0.6, alpha:1)
         preferences5.drawing.arrowPosition = EasyTipView.ArrowPosition.top
 
-        aTooltip = EasyTipView(text: "Select your Sticker/Logo here", preferences: preferences, delegate: self)
+        aTooltip = EasyTipView(text: "Select your Logo here", preferences: preferences, delegate: self)
         bTooltip = EasyTipView(text: "Help is here", preferences: preferences3, delegate: self)
         cTooltip = EasyTipView(text: "Make order here", preferences: preferences4, delegate: self)
-        dTooltip = EasyTipView(text: "Touch anywhere on screen to put stick the logo", preferences: preferences2, delegate: self)
-        eTooltip = EasyTipView(text: "Share with employes", preferences: preferences5, delegate: self)
+        dTooltip = EasyTipView(text: "Touch anywhere on screen to put sticker", preferences: preferences2, delegate: self)
+        eTooltip = EasyTipView(text: "Share your masterpiece here", preferences: preferences5, delegate: self)
     }
 
     @objc func openOrderVC() {

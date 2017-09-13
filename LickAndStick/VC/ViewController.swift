@@ -8,7 +8,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     var arSCNView = ARSCNView()
     var arSession = ARSession()
-    var arSessionConfiguration = ARSessionConfiguration()
+    var arSessionConfiguration = ARWorldTrackingConfiguration()
 
     var imageWasSelected = false
     var picNode: SCNNode = SCNNode()
@@ -180,12 +180,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.allowsEditing = false
         present(picker, animated: true) { }
     }
-
-    func print_Matrix4(matrix: SCNMatrix4) {
-        print("‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹matrix‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹")
-        print(String(format: "\n%.2f, %.2f, %.2f, %.2f\n%.2f, %.2f, %.2f, %.2f\n%.2f, %.2f, %.2f, %.2f\n%.2f, %.2f, %.2f, %.2f\n", matrix.m11, matrix.m12, matrix.m13, matrix.m14, matrix.m21, matrix.m22, matrix.m23, matrix.m24, matrix.m31, matrix.m32, matrix.m33, matrix.m34, matrix.m41, matrix.m42, matrix.m43, matrix.m44))
-        print("››››››››››››››››››››››››matrix›››››››››››››››››››››››››››››››")
-    }
+    
+//    func print_Matrix4(matrix: SCNMatrix4) {
+//        print("‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹matrix‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹")
+//        print(String(format: "\n%.2f, %.2f, %.2f, %.2f\n%.2f, %.2f, %.2f, %.2f\n%.2f, %.2f, %.2f, %.2f\n%.2f, %.2f, %.2f, %.2f\n", matrix.m11, matrix.m12, matrix.m13, matrix.m14, matrix.m21, matrix.m22, matrix.m23, matrix.m24, matrix.m31, matrix.m32, matrix.m33, matrix.m34, matrix.m41, matrix.m42, matrix.m43, matrix.m44))
+//        print("››››››››››››››››››››››››matrix›››››››››››››››››››››››››››››››")
+//    }
 
     @objc func tapped(_ tapper: UITapGestureRecognizer) {
         if imageWasSelected == false {
@@ -265,13 +265,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: - ARSCNViewDelegate
 
     func initARSessionConfiguration() {
-        arSessionConfiguration = ARSessionConfiguration()
-        //1.Create a world tracking session configuration (using ARWorldTrackingSessionConfiguration effect is better), need A9 chip support
-        let configuration = ARWorldTrackingSessionConfiguration()
-        //2.Set the tracking direction (tracking plane, used later)
-        configuration.planeDetection = .horizontal
-        arSessionConfiguration = configuration
-        //3.Adaptive light (the camera from dark to strong light fast transition effect will be gentle)
+        arSessionConfiguration = ARWorldTrackingConfiguration()
+        arSessionConfiguration.planeDetection = .horizontal
         arSessionConfiguration.isLightEstimationEnabled = true
     }
 

@@ -5,43 +5,51 @@ import SnapKit
 class OrderVC: UIViewController {
 
     override func viewDidLoad() {
-        view.backgroundColor = UIColor.white
-
         let backIView = UIImageView(image: #imageLiteral(resourceName: "back"))
         backIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.back)))
         view.addSubview(backIView)
         backIView.isUserInteractionEnabled = true
         backIView.snp.makeConstraints { (make) in
-            make.left.equalTo(view.snp.left).offset(15)
-            make.top.equalTo(view.snp.top).offset(30)
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(15)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(5)
             make.height.equalTo(40)
             make.width.equalTo(40)
         }
 
         let titleLabel = UILabel()
-        titleLabel.text = "StickerIt!"
+        titleLabel.text = "Sticker It!"
         titleLabel.font = UIFont(name: "PingFang HK", size: 24.0)
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
-            make.top.equalTo(view.snp.top).offset(50)
+            make.centerY.equalTo(backIView.snp.centerY)
         }
 
         let descriptionTextView = UITextView()
         let mailto = URL(string: "mailto:ifitnine@gmail.com")
         var str = NSMutableAttributedString(string: "Happy to see that you found your logo! Currently app operates as a Proof Of The Concept, thus, ordering works only via email: ifitnine@gmail.com. Please, specify size of stickers, number of units and attack vector file your logo.")
-        str.addAttribute(NSAttributedStringKey.link, value: mailto!, range: NSRange(location: 67, length: 18))
+        str.addAttribute(NSAttributedStringKey.link, value: mailto!, range: NSRange(location: 67, length: 20))
+        str.addAttribute(NSAttributedStringKey.link, value: mailto!, range: NSRange(location: 126, length: 18))
         str.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "PingFang HK", size: 18.0)!, range: NSRange(location: 0, length: str.length))
         descriptionTextView.attributedText = str
         descriptionTextView.isScrollEnabled = false
+        descriptionTextView.isEditable = false
         descriptionTextView.backgroundColor = view.backgroundColor
         view.addSubview(descriptionTextView)
-        descriptionTextView.snp.makeConstraints { (make) in
-            make.left.equalTo(view.snp.left).offset(15)
-            make.right.equalTo(view.snp.right).offset(-15)
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone, .tv, .carPlay, .unspecified:
+            descriptionTextView.snp.makeConstraints { (make) in
+                make.left.equalTo(view.safeAreaLayoutGuide).offset(15)
+                make.right.equalTo(view.safeAreaLayoutGuide).offset(-15)
+                make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            }
+        case .pad:
+            descriptionTextView.snp.makeConstraints { (make) in
+                make.left.equalTo(view.safeAreaLayoutGuide).offset(15)
+                make.right.equalTo(view.safeAreaLayoutGuide).offset(-15)
+                make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            }
         }
-
         var fixedWidth = descriptionTextView.frame.size.width
         descriptionTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         var newSize = descriptionTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
@@ -54,7 +62,7 @@ class OrderVC: UIViewController {
         versionLabel.font = UIFont(name: "PingFang HK", size: 10.0)
         view.addSubview(versionLabel)
         versionLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(view.snp.bottom).offset(-20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-5)
             make.centerX.equalTo(view.snp.centerX)
         }
 
@@ -66,11 +74,12 @@ class OrderVC: UIViewController {
         str.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "PingFang HK", size: 14.0)!, range: NSRange(location: 0, length: str.length))
         contactsTextView.attributedText = str
         contactsTextView.isScrollEnabled = false
+        contactsTextView.isEditable = false
         contactsTextView.backgroundColor = view.backgroundColor
         view.addSubview(contactsTextView)
         contactsTextView.snp.makeConstraints { (make) in
-            make.left.equalTo(view.snp.left).offset(15)
-            make.right.equalTo(view.snp.right).offset(-15)
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(15)
+            make.right.equalTo(view.safeAreaLayoutGuide).offset(-15)
             make.bottom.equalTo(versionLabel.snp.top).offset(-15)
         }
 

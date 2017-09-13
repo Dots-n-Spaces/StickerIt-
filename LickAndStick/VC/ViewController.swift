@@ -31,62 +31,74 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        arSession.delegate = self
-        initARSCNView()
-        initARSessionConfiguration()
+        if ARConfiguration.isSupported {
+            view.backgroundColor = .white
 
-        view.addSubview(arSCNView)
-        arSession.run(arSessionConfiguration)
+            arSession.delegate = self
+            initARSCNView()
+            initARSessionConfiguration()
 
-        chooseImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pickPic)))
-        view.addSubview(chooseImg)
-        chooseImg.isUserInteractionEnabled = true
-        chooseImg.snp.makeConstraints { (make) in
-            make.left.equalTo(view.snp.left).offset(15)
-            make.bottom.equalTo(view.snp.bottom).offset(-25)
-            make.height.equalTo(60)
-            make.width.equalTo(60)
+            view.addSubview(arSCNView)
+            arSession.run(arSessionConfiguration)
+
+            chooseImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pickPic)))
+            view.addSubview(chooseImg)
+            chooseImg.isUserInteractionEnabled = true
+            chooseImg.snp.makeConstraints { (make) in
+                make.left.equalTo(view.safeAreaLayoutGuide).offset(15)
+                make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-15)
+                make.height.equalTo(60)
+                make.width.equalTo(60)
+            }
+
+            centerView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2, width: 0, height: 0))
+            view.addSubview(centerView)
+
+            helpIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.showTooltips)))
+            view.addSubview(helpIView)
+            helpIView.isUserInteractionEnabled = true
+            helpIView.snp.makeConstraints { (make) in
+                make.left.equalTo(view.safeAreaLayoutGuide).offset(20)
+                make.top.equalTo(view.safeAreaLayoutGuide).offset(5)
+                make.height.equalTo(40)
+                make.width.equalTo(40)
+            }
+
+            shareIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openShare)))
+            view.addSubview(shareIView)
+            shareIView.isUserInteractionEnabled = true
+            shareIView.snp.makeConstraints { (make) in
+                make.right.equalTo(view.safeAreaLayoutGuide).offset(-15)
+                make.top.equalTo(view.safeAreaLayoutGuide).offset(5)
+                make.height.equalTo(40)
+                make.width.equalTo(40)
+            }
+
+            buyIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openOrderVC)))
+            view.addSubview(buyIView)
+            buyIView.isUserInteractionEnabled = true
+            buyIView.snp.makeConstraints { (make) in
+                make.right.equalTo(view.safeAreaLayoutGuide).offset(-20)
+                make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-15)
+                make.height.equalTo(60)
+                make.width.equalTo(60)
+            }
+
+            addTooltips()
+
+            let userDefaults = UserDefaults.standard
+            if !userDefaults.bool(forKey: "walkthroughPresented") {
+                showTooltips()
+            }
         }
+    }
 
-        centerView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2, width: 0, height: 0))
-        view.addSubview(centerView)
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
 
-        helpIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.showTooltips)))
-        view.addSubview(helpIView)
-        helpIView.isUserInteractionEnabled = true
-        helpIView.snp.makeConstraints { (make) in
-            make.left.equalTo(view.snp.left).offset(20)
-            make.top.equalTo(view.snp.top).offset(30)
-            make.height.equalTo(40)
-            make.width.equalTo(40)
-        }
-
-        shareIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openShare)))
-        view.addSubview(shareIView)
-        shareIView.isUserInteractionEnabled = true
-        shareIView.snp.makeConstraints { (make) in
-            make.right.equalTo(view.snp.right).offset(-15)
-            make.top.equalTo(view.snp.top).offset(30)
-            make.height.equalTo(40)
-            make.width.equalTo(40)
-        }
-
-        buyIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openOrderVC)))
-        view.addSubview(buyIView)
-        buyIView.isUserInteractionEnabled = true
-        buyIView.snp.makeConstraints { (make) in
-            make.right.equalTo(view.snp.right).offset(-20)
-            make.bottom.equalTo(view.snp.bottom).offset(-25)
-            make.height.equalTo(60)
-            make.width.equalTo(60)
-        }
-
-        addTooltips()
-
-        let userDefaults = UserDefaults.standard
-        if !userDefaults.bool(forKey: "walkthroughPresented") {
-            showTooltips()
-        }
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIInterfaceOrientation.portrait
     }
 
     @objc private func showTooltips() {
@@ -143,7 +155,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @objc func openOrderVC() {
-        present(OrderVC(), animated: true) { }
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone, .tv, .carPlay, .unspecified:
+            present(OrderVC(), animated: true) { }
+        case .pad:
+            let orderVC = OrderVC()
+            orderVC.modalPresentationStyle = .popover
+            let popover = orderVC.popoverPresentationController!
+            popover.permittedArrowDirections = .down
+            popover.sourceView = buyIView
+            popover.sourceRect = buyIView.bounds
+            present(orderVC, animated: true, completion: nil)
+        }
     }
 
     @objc func openShare() {

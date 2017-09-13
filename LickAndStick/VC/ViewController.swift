@@ -43,7 +43,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         chooseImg.isUserInteractionEnabled = true
         chooseImg.snp.makeConstraints { (make) in
             make.left.equalTo(view.snp.left).offset(15)
-            make.bottom.equalTo(view.snp.bottom).offset(-20)
+            make.bottom.equalTo(view.snp.bottom).offset(-25)
             make.height.equalTo(60)
             make.width.equalTo(60)
         }
@@ -55,7 +55,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.addSubview(helpIView)
         helpIView.isUserInteractionEnabled = true
         helpIView.snp.makeConstraints { (make) in
-            make.left.equalTo(view.snp.left).offset(15)
+            make.left.equalTo(view.snp.left).offset(20)
             make.top.equalTo(view.snp.top).offset(30)
             make.height.equalTo(40)
             make.width.equalTo(40)
@@ -75,8 +75,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.addSubview(buyIView)
         buyIView.isUserInteractionEnabled = true
         buyIView.snp.makeConstraints { (make) in
-            make.right.equalTo(view.snp.right).offset(-15)
-            make.bottom.equalTo(view.snp.bottom).offset(-20)
+            make.right.equalTo(view.snp.right).offset(-20)
+            make.bottom.equalTo(view.snp.bottom).offset(-25)
             make.height.equalTo(60)
             make.width.equalTo(60)
         }

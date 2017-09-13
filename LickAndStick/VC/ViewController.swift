@@ -151,7 +151,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         let activityViewController = UIActivityViewController(activityItems: sharingItems.flatMap({$0}), applicationActivities: nil)
         if UIDevice.current.userInterfaceIdiom == .pad {
-            activityViewController.popoverPresentationController?.sourceView = view
+//            let shareViewPoint = shareIView
+//            shareViewPoint.snp.makeConstraints({ (make) in
+//                make.top.equalTo(shareIView.snp.bottom)
+//                make.left.equalTo(shareIView.snp.left).offset(20)
+//            })
+            activityViewController.popoverPresentationController?.sourceView = shareIView
+            activityViewController.popoverPresentationController?.permittedArrowDirections = .right
+            activityViewController.popoverPresentationController?.sourceRect = CGRect(x: shareIView.bounds.origin.x, y: shareIView.bounds.origin.y+20, width: 1, height: 1)
+//            activityViewController.popoverPresentationController?.sourceRect = shareIView.frame
         }
         present(activityViewController, animated: true, completion: nil)
     }

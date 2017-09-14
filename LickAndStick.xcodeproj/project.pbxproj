@@ -412,6 +412,7 @@
 				DEVELOPMENT_TEAM = 6754N2LED2;
 				INFOPLIST_FILE = LickAndStick/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"RELEASE\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifitnine.stickeritar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b706f233-0b0d-444f-9351-bfbc02db8e01";

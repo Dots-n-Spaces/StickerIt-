@@ -8,7 +8,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        FirebaseApp.configure()
+        #if RELEASE
+            FirebaseCore.FIRApp.configure()
+//        FirebaseApp.configure()
+        #endif
 
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()

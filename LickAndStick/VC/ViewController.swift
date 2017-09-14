@@ -32,8 +32,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
 
         if ARConfiguration.isSupported {
-            view.backgroundColor = .white
-
             arSession.delegate = self
             initARSCNView()
             initARSessionConfiguration()

@@ -308,7 +308,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //3.Automatically refresh the light (3D games used, here can be ignored)
         arSCNView.automaticallyUpdatesLighting = true
         // Open debug
-//        arSCNView.debugOptions = SCNDebugOptions(rawValue: SCNDebugOptions.RawValue(UInt8(ARSCNDebugOptions.showWorldOrigin.rawValue) | UInt8(ARSCNDebugOptions.showFeaturePoints.rawValue)))
+//        arSCNView.debugOptions = ARSCNDebugOptions.showFeaturePoints
         // Add gestures
         let tapper = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
         arSCNView.addGestureRecognizer(tapper)

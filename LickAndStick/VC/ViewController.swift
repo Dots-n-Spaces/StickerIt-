@@ -3,7 +3,6 @@ import SceneKit
 import ARKit
 import EasyTipView
 import SnapKit
-import Google
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ARSCNViewDelegate, ARSessionDelegate {
 
@@ -31,25 +30,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-
-        // Optional: configure GAI options.
-        if let gai = GAI.sharedInstance() {
-            print("Google Analytics not configured correctly")
-            gai.trackUncaughtExceptions = true  // report uncaught exceptions
-            gai.logger.logLevel = GAILogLevel.verbose  // remove before app release
-        }
-
-        if let tracker = GAI.sharedInstance().defaultTracker {
-            tracker.set(kGAIScreenName, value: "ViewController")
-
-            if let builder = GAIDictionaryBuilder.createScreenView() {
-                tracker.send(builder.build() as [NSObject : AnyObject])
-            }
-        }
 
         if ARConfiguration.isSupported {
             arSession.delegate = self

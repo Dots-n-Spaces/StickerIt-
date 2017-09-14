@@ -7,14 +7,6 @@ class OrderVC: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = UIColor.white
 
-        if let tracker = GAI.sharedInstance().defaultTracker {
-            tracker.set(kGAIScreenName, value: "OrderVC")
-
-            if let builder = GAIDictionaryBuilder.createScreenView() {
-                tracker.send(builder.build() as [NSObject : AnyObject])
-            }
-        }
-
         let backIView = UIImageView(image: #imageLiteral(resourceName: "back"))
         backIView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.back)))
         view.addSubview(backIView)

@@ -20,6 +20,7 @@
 		31F76B0B5A5BB4A26958C0CD /* Pods-LickAndStick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LickAndStick.release.xcconfig"; path = "Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick.release.xcconfig"; sourceTree = "<group>"; };
 		542604B7F2B3E59D169015F6 /* Pods_LickAndStick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LickAndStick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		643526E91F3DF2D5006830E9 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		64424B5C1F6AA927007E9788 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		647418FD1F34AA94007435CF /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
 		64D0E8C91F3479AD007735A7 /* LickAndStick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LickAndStick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D0E8CC1F3479AD007735A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 				64D0E8CC1F3479AD007735A7 /* AppDelegate.swift */,
 				64D0E8D51F3479AD007735A7 /* Assets.xcassets */,
 				64D0E8DA1F3479AD007735A7 /* Info.plist */,
+				64424B5C1F6AA927007E9788 /* GoogleService-Info.plist */,
 				64FE22DD1F371C9D0003DB67 /* LaunchScreen.storyboard */,
 				647418FF1F34AA9A007435CF /* VC */,
 				643526EB1F3DF455006830E9 /* Ext */,

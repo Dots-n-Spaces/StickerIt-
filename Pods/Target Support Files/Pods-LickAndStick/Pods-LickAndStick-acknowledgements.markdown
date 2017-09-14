@@ -27,6 +27,10 @@ SOFTWARE.
 
 
 
+## Firebase
+
+Copyright 2017 Google
+
 ## FirebaseAnalytics
 
 Copyright 2017 Google
@@ -38,14 +42,6 @@ Copyright 2017 Google
 ## FirebaseInstanceID
 
 Copyright 2017 Google
-
-## Google
-
-Copyright 2016 Google Inc.
-
-## GoogleAnalytics
-
-Copyright 2016 Google
 
 ## GoogleToolboxForMac
 

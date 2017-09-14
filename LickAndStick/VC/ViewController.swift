@@ -37,6 +37,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             initARSessionConfiguration()
 
             view.addSubview(arSCNView)
+
+            arSCNView.snp.makeConstraints({ (make) in
+                make.edges.equalTo(view)
+            })
+
             arSession.run(arSessionConfiguration)
 
             chooseImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pickPic)))

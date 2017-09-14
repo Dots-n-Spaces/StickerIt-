@@ -48,5 +48,7 @@
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>We need to access your photos so you can choose your logo.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need to access your photos so you can choose your logo.</string>
 </dict>
 </plist>

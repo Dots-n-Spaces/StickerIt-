@@ -7,29 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-
-//        GoogleAnalyticsManager.initialize()
-
-//        if INPreferences.siriAuthorizationStatus() != .authorized {
-//            INPreferences.requestSiriAuthorization { (INSiriAuthorizationStatus) in
-//                if INSiriAuthorizationStatus == .authorized {
-//
-//                }
-//            }
-//        } else {
-//
-//        }
-
-        //        let userDefaults = UserDefaults.standard
-        //
-        //        if !userDefaults.bool(forKey: "walkthroughPresented") {
-        //            showWalkthrough()
-        //            userDefaults.set(true, forKey: "walkthroughPresented")
-        //            userDefaults.synchronize()
-        //        }
-//        navController.pushViewController(WalkthroughVC(), animated: true)
-
+        
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
 

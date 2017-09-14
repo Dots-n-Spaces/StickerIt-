@@ -5,6 +5,7 @@ target 'LickAndStick' do
     pod 'EasyTipView', '~> 1.0.2'
     pod 'SwiftLint'
     pod 'SnapKit', '~> 3.2.0'
+    pod 'Google/Analytics'
 end
 
 post_install do |installer|

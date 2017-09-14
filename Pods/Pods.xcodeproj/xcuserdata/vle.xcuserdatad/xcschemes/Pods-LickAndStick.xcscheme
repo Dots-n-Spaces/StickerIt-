@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26FF40F4D428953FF602CA0CA8AA0E10"
+               BlueprintIdentifier = "B71B784CC21C30974EB3BD1B13EADBDA"
                BuildableName = "Pods_LickAndStick.framework"
                BlueprintName = "Pods-LickAndStick"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "26FF40F4D428953FF602CA0CA8AA0E10"
+            BlueprintIdentifier = "B71B784CC21C30974EB3BD1B13EADBDA"
             BuildableName = "Pods_LickAndStick.framework"
             BlueprintName = "Pods-LickAndStick"
             ReferencedContainer = "container:Pods.xcodeproj">

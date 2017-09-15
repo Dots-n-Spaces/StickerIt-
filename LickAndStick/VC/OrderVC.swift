@@ -31,7 +31,6 @@ class OrderVC: UIViewController {
         let mailto = URL(string: "mailto:ifitnine@gmail.com")
         var str = NSMutableAttributedString(string: "Happy to see that you found your logo! Currently app operates as a Proof Of The Concept, thus, ordering works only via email: ifitnine@gmail.com. Please, specify size of stickers, number of units, attach vector file, and send us email. We will get back with price and time of delivery.")
 
-        str.addAttribute(NSAttributedStringKey.link, value: mailto!, range: NSRange(location: 67, length: 20))
         str.addAttribute(NSAttributedStringKey.link, value: mailto!, range: NSRange(location: 126, length: 18))
         str.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "PingFang HK", size: 18.0)!, range: NSRange(location: 0, length: str.length))
         descriptionTextView.attributedText = str

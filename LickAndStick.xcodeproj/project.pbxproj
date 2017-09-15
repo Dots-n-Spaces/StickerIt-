@@ -10,6 +10,7 @@
 		643526EA1F3DF2D5006830E9 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643526E91F3DF2D5006830E9 /* StringExt.swift */; };
 		64737D881F371AB700367101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64D0E8D51F3479AD007735A7 /* Assets.xcassets */; };
 		647418FE1F34AA94007435CF /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647418FD1F34AA94007435CF /* OrderVC.swift */; };
+		649693B61F6BBE7100374B42 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64424B5C1F6AA927007E9788 /* GoogleService-Info.plist */; };
 		64D0E8CD1F3479AD007735A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0E8CC1F3479AD007735A7 /* AppDelegate.swift */; };
 		64D0E8D11F3479AD007735A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0E8D01F3479AD007735A7 /* ViewController.swift */; };
 		64FE22DF1F371C9D0003DB67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64FE22DD1F371C9D0003DB67 /* LaunchScreen.storyboard */; };
@@ -175,6 +176,7 @@
 			files = (
 				64737D881F371AB700367101 /* Assets.xcassets in Resources */,
 				64FE22DF1F371C9D0003DB67 /* LaunchScreen.storyboard in Resources */,
+				649693B61F6BBE7100374B42 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

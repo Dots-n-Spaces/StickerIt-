@@ -38,9 +38,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
             view.addSubview(arSCNView)
 
-            arSCNView.snp.makeConstraints({ (make) in
+            arSCNView.snp.makeConstraints { (make) in
                 make.edges.equalTo(view)
-            })
+            }
 
             arSession.run(arSessionConfiguration)
 
@@ -175,13 +175,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @objc func openShare() {
         let sharingItems = [arSCNView.snapshot()]
 
-        let activityViewController = UIActivityViewController(activityItems: sharingItems.flatMap({$0}), applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: sharingItems.compactMap { $0 }, applicationActivities: nil)
         if UIDevice.current.userInterfaceIdiom == .pad {
 //            let shareViewPoint = shareIView
-//            shareViewPoint.snp.makeConstraints({ (make) in
+//            shareViewPoint.snp.makeConstraints{ (make) in
 //                make.top.equalTo(shareIView.snp.bottom)
 //                make.left.equalTo(shareIView.snp.left).offset(20)
-//            })
+//            }
             activityViewController.popoverPresentationController?.sourceView = shareIView
             activityViewController.popoverPresentationController?.permittedArrowDirections = .right
             activityViewController.popoverPresentationController?.sourceRect = CGRect(x: shareIView.bounds.origin.x, y: shareIView.bounds.origin.y+20, width: 1, height: 1)

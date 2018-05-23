@@ -2,16 +2,8 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'StickerIt!' do
-    pod 'EasyTipView', '~> 1.0.2'
+    pod 'EasyTipView', :git => 'git@github.com:IFit9/EasyTipView', :branch => 'swift-4'
     pod 'SwiftLint'
-    pod 'SnapKit', '~> 3.2.0'
-    pod 'Firebase'
-end
-
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '3.2'
-        end
-    end
+    pod 'SnapKit'
+    pod 'Firebase/Core'
 end

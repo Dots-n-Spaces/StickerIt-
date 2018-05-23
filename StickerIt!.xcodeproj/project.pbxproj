@@ -20,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		05A4E0A28401AE1AB99F619E /* Pods-StickerIt!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickerIt!.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickerIt!/Pods-StickerIt!.release.xcconfig"; sourceTree = "<group>"; };
-		31F76B0B5A5BB4A26958C0CD /* Pods-LickAndStick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LickAndStick.release.xcconfig"; path = "Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick.release.xcconfig"; sourceTree = "<group>"; };
 		542604B7F2B3E59D169015F6 /* Pods_LickAndStick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LickAndStick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		643526E91F3DF2D5006830E9 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		64424B5C1F6AA927007E9788 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -33,7 +32,6 @@
 		64FE22DE1F371C9D0003DB67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LickAndStick/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C359CB77C6373FE4DE0B33D /* Pods_StickerIt_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StickerIt_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80DE911EAB1913989D578E4C /* Pods-StickerIt!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickerIt!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StickerIt!/Pods-StickerIt!.debug.xcconfig"; sourceTree = "<group>"; };
-		E49C98A1A015E66C46B572CE /* Pods-LickAndStick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LickAndStick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LickAndStick/Pods-LickAndStick.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +108,6 @@
 		878D4C6A789439C53CB70184 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E49C98A1A015E66C46B572CE /* Pods-LickAndStick.debug.xcconfig */,
-				31F76B0B5A5BB4A26958C0CD /* Pods-LickAndStick.release.xcconfig */,
 				80DE911EAB1913989D578E4C /* Pods-StickerIt!.debug.xcconfig */,
 				05A4E0A28401AE1AB99F619E /* Pods-StickerIt!.release.xcconfig */,
 			);
@@ -139,7 +135,6 @@
 				64D0E8C61F3479AD007735A7 /* Frameworks */,
 				64D0E8C71F3479AD007735A7 /* Resources */,
 				55746C5EE6EE70EF8C3AD7AB /* [CP] Embed Pods Frameworks */,
-				748DD1CD4A15E2E5F1AA426D /* [CP] Copy Pods Resources */,
 				647419001F34AD66007435CF /* ShellScript */,
 			);
 			buildRules = (
@@ -209,12 +204,14 @@
 				"${BUILT_PRODUCTS_DIR}/EasyTipView/EasyTipView.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyTipView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -233,21 +230,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
-		};
-		748DD1CD4A15E2E5F1AA426D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StickerIt!/Pods-StickerIt!-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		B7237C93205FC15B4871E725 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

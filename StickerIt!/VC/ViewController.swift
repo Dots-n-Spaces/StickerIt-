@@ -177,15 +177,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         let activityViewController = UIActivityViewController(activityItems: sharingItems.compactMap { $0 }, applicationActivities: nil)
         if UIDevice.current.userInterfaceIdiom == .pad {
-//            let shareViewPoint = shareIView
-//            shareViewPoint.snp.makeConstraints{ (make) in
-//                make.top.equalTo(shareIView.snp.bottom)
-//                make.left.equalTo(shareIView.snp.left).offset(20)
-//            }
             activityViewController.popoverPresentationController?.sourceView = shareIView
             activityViewController.popoverPresentationController?.permittedArrowDirections = .right
             activityViewController.popoverPresentationController?.sourceRect = CGRect(x: shareIView.bounds.origin.x, y: shareIView.bounds.origin.y+20, width: 1, height: 1)
-//            activityViewController.popoverPresentationController?.sourceRect = shareIView.frame
         }
         present(activityViewController, animated: true, completion: nil)
     }
@@ -252,19 +246,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    @objc func swipped(_ recognizer: UISwipeGestureRecognizer) {
-        let location: CGPoint = recognizer.location(in: arSCNView)
-        let results: [SCNHitTestResult] = arSCNView.hitTest(location, options: nil)
-        if results.count > 0 {
-            let result: SCNHitTestResult? = results.first
-            if result?.node == picNode {
+//    @objc func swipped(_ recognizer: UISwipeGestureRecognizer) {
+//        let location: CGPoint = recognizer.location(in: arSCNView)
+//        let results: [SCNHitTestResult] = arSCNView.hitTest(location, options: nil)
+//        if results.count > 0 {
+//            let result: SCNHitTestResult? = results.first
+//            if result?.node == picNode {
                 //            if (recognizer.direction == UISwipeGestureRecognizerDirectionRight)
                 //            {
                 //                [self.picNode.geometry setMaterials:@[self.picArray[0]]];
                 //            }
-            }
-        }
-    }
+//            }
+//        }
+//    }
 
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         curCameraAngle = frame.camera.eulerAngles
@@ -319,23 +313,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let tapper = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
         arSCNView.addGestureRecognizer(tapper)
         // Handle left slip
-        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipped))
-        swipeLeftRecognizer.direction = .left
-        arSCNView.addGestureRecognizer(swipeLeftRecognizer)
+//        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipped))
+//        swipeLeftRecognizer.direction = .left
+//        arSCNView.addGestureRecognizer(swipeLeftRecognizer)
         // Handle right slippery
-        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipped))
-        swipeRightRecognizer.direction = .right
-        arSCNView.addGestureRecognizer(swipeRightRecognizer)
+//        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipped))
+//        swipeRightRecognizer.direction = .right
+//        arSCNView.addGestureRecognizer(swipeRightRecognizer)
     }
-
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
 
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

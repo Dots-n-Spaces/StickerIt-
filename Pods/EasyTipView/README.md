@@ -13,7 +13,7 @@ Description
 ```EasyTipView``` is a fully customisable tooltip view written in Swift that can be used as a call to action or informative tip.
 
 |<img src="https://raw.githubusercontent.com/teodorpatras/EasyTipView/master/assets/easytipview.gif" width="320">|<img src="https://raw.githubusercontent.com/teodorpatras/EasyTipView/master/assets/static.png" width="320">|
-|----------|-------------|------|
+|----------|-------------|
 
 # Contents
 1. [Features](#features)
@@ -22,7 +22,6 @@ Description
 5. [Usage](#usage)
 6. [Customising the appearance](#customising)
 7. [Customising the presentation and dismissal animations](#customising-animations)
-8. [Implementing custom transitions](#custom-transitions)
 9. [Public interface](#public-interface)
 10. [License](#license)
 11. [Contact](#contact)
@@ -51,11 +50,15 @@ $ gem install cocoapods
 
 To integrate EasyTipView into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-use_frameworks!
+For **Swift 4.1**
 
+```ruby
+pod 'EasyTipView', '~> 1.1.0'
+```
+
+For **Swift 3.2**
+
+```ruby
 pod 'EasyTipView', '~> 1.0.2'
 ```
 
@@ -79,7 +82,7 @@ $ brew update
 $ brew install carthage
 ```
 
-To integrate Alamofire into your Xcode project using Carthage, specify it in your `Cartfile`:
+To integrate EasyTipView into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
 github "teodorpatras/EasyTipView"
@@ -94,7 +97,7 @@ If you prefer not to use either of the aforementioned dependency managers, you c
 <a name="supported-versions"> Supported OS & SDK Versions </a>
 -----------------------------
 
-* Supported build target - iOS 8.0 (Xcode 7.x)
+* Supported build target - iOS 8+ (Xcode 8)
 
 <a name="usage"> Usage </a>
 --------------
@@ -175,6 +178,7 @@ In order to customise the `EasyTipView` appearance and behaviour, you can play w
 |`dismissFinalAlpha`|The alpha to be applied on the tip view when it is animating off screen.|
 |`showDuration`|Show animation duration.|
 |`dismissDuration`|Dismiss animation duration.|
+|`dismissOnTap`|Prevents view from dismissing on tap if it is set to false. (Default value is true.)|
 
 <a name="customising-animations"> Customising the presentation or dismissal animations </a>
 --------------

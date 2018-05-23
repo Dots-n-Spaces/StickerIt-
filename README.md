@@ -4,7 +4,7 @@
 
 *Your logo in physical form*
 
-[AppStore](https://itunes.apple.com/us/app/sticker-it/id1219949830?mt=8)
+[AppStore](https://itunes.apple.com/us/app/sticker-it/id1219949830?mt=8) | [Product Hunt](https://www.producthunt.com/posts/sticker-it)
 
 [![Sticker It! demo](http://img.youtube.com/vi/QstQF_9r67k/0.jpg)](https://www.youtube.com/watch?v=QstQF_9r67k "Sticker It! demo")
 

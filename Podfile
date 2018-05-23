@@ -1,7 +1,7 @@
 platform :ios, '11.0'
 use_frameworks!
 
-target 'LickAndStick' do
+target 'StickerIt!' do
     pod 'EasyTipView', '~> 1.0.2'
     pod 'SwiftLint'
     pod 'SnapKit', '~> 3.2.0'

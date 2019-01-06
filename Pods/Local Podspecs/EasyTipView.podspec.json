@@ -1,6 +1,6 @@
 {
   "name": "EasyTipView",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "license": "MIT",
   "summary": "Elegant tooltip view written in Swift",
   "description": "EasyTipView is a fully customisable tooltip view written in Swift that can be used as a call to action or informative tip. It can be shown above of below any UIBarItem or UIView subclass.",
@@ -11,7 +11,7 @@
   },
   "source": {
     "git": "https://github.com/teodorpatras/EasyTipView.git",
-    "tag": "1.1.0"
+    "tag": "2.0.0"
   },
   "platforms": {
     "ios": "8.0"

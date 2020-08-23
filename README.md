@@ -2,7 +2,7 @@
 
 # Sticker It!
 
-*Your logo in physical form*
+*Your logo in a physical form*
 
 [AppStore](https://itunes.apple.com/us/app/sticker-it/id1219949830?mt=8) | [Product Hunt](https://www.producthunt.com/posts/sticker-it)
 
